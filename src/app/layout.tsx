@@ -1,5 +1,7 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Sidebar from "./components/Sidebar"; // Import Sidebar
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,7 +30,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="grid grid-cols-[auto,1fr] h-screen">
+          <Sidebar /> {/* Sidebar */}
+          <main className="p-4 overflow-auto">
+            {/* Static content for testing */}
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

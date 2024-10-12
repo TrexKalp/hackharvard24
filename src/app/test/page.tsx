@@ -4,7 +4,7 @@ const TestPage: React.FC = () => {
   return (
     <div>
       <h1>Test Page</h1>
-      <p>This is a template for a new page.</p>
+      <p>This is a test page.</p>
     </div>
   );
 };
