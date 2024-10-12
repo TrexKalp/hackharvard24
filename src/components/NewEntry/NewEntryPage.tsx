@@ -17,6 +17,9 @@ import AdmitDate from "../FormElements/DatePicker/AdmitDate";
 import DispatchDate from "../FormElements/DatePicker/DispatchDate";
 import { useEffect, useState } from "react";
 import { TimeInput } from "@nextui-org/date-input";
+import AdmissionType from "../FormElements/AdmissionType";
+import ButtonDefault from "../Buttons/ButtonDefault";
+
 const NewEntryPage = () => {
   const [time, setTime] = useState<string>("");
 
@@ -41,7 +44,7 @@ const NewEntryPage = () => {
           <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
-                New Patient Entry
+                Date and Time
               </h3>
             </div>
             <div className="flex flex-col gap-5.5 p-6.5">
@@ -99,9 +102,108 @@ const NewEntryPage = () => {
               <DispatchDate />
             </div>
           </div>
+          <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
+            <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
+              <h3 className="font-medium text-dark dark:text-white">
+                Additional Information
+              </h3>
+            </div>
+            <div className="flex flex-col gap-5.5 p-6.5">
+              <AdmissionType id="multiSelect" />
+              <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                  Admission Location
+                </label>
+                <input
+                  type="text"
+                  placeholder="Admission Location"
+                  className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                  Discharge Location
+                </label>
+                <input
+                  type="text"
+                  placeholder="Admission Location"
+                  className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
+            <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
+              <h3 className="font-medium text-dark dark:text-white">
+                Personal Information
+              </h3>
+            </div>
+            <div className="flex flex-col gap-5.5 p-6.5">
+              <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                  Insurance
+                </label>
+                <input
+                  type="text"
+                  placeholder="Insurance"
+                  className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                  Language
+                </label>
+                <input
+                  type="text"
+                  placeholder="Language"
+                  className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                  Ethnicity
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ethnicity"
+                  className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                  Diagnosis
+                </label>
+                <input
+                  type="text"
+                  placeholder="Diagnosis"
+                  className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                  Report
+                </label>
+                <textarea
+                  rows={6}
+                  placeholder="Report"
+                  className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
+                ></textarea>
+              </div>
+              <div>
+                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+                  Upload File
+                </label>
+                <input
+                  type="file"
+                  className="w-full cursor-pointer rounded-[7px] border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-[#E2E8F0] file:px-6.5 file:py-[13px] file:text-body-sm file:font-medium file:text-dark-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-dark dark:border-dark-3 dark:bg-dark-2 dark:file:border-dark-3 dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
+                />
+              </div>
+            </div>
+          </div>
 
           {/* <!-- Toggle switch input --> */}
-          <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
+          {/* <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
                 Toggle switch input
@@ -113,10 +215,10 @@ const NewEntryPage = () => {
               <SwitcherThree />
               <SwitcherFour />
             </div>
-          </div>
+          </div> */}
 
           {/* <!-- Time and date --> */}
-          <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
+          {/* <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
                 Time and date
@@ -126,10 +228,10 @@ const NewEntryPage = () => {
               <DatePickerOne />
               <DatePickerTwo />
             </div>
-          </div>
+          </div> */}
 
           {/* <!-- File upload --> */}
-          <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
+          {/* <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
                 File upload
@@ -160,7 +262,6 @@ const NewEntryPage = () => {
         </div>
 
         <div className="flex flex-col gap-9">
-          {/* <!-- Textarea Fields --> */}
           <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
@@ -204,7 +305,6 @@ const NewEntryPage = () => {
             </div>
           </div>
 
-          {/* <!-- Checkbox and radio --> */}
           <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
@@ -220,7 +320,6 @@ const NewEntryPage = () => {
             </div>
           </div>
 
-          {/* <!-- Select input --> */}
           <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
@@ -232,7 +331,13 @@ const NewEntryPage = () => {
               <MultiSelect id="multiSelect" />
             </div>
           </div>
+        </div> */}
         </div>
+        <ButtonDefault
+          label="Button"
+          link="/"
+          customClasses="max-w-1/2 bg-primary text-white px-10 py-3.5 lg:px-8 xl:px-10"
+        />
       </div>
     </>
   );

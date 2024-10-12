@@ -16,7 +16,8 @@ const CalendarPage = () => {
     <DefaultLayout>
       <div className="mx-auto max-w-7xl">
         <Breadcrumb pageName="Calendar" />
-        <CalendarBox />
+
+        <ChatCard />
       </div>
     </DefaultLayout>
   );
