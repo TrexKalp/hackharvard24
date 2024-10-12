@@ -334,8 +334,8 @@ const NewEntryPage = () => {
         </div> */}
         </div>
         <ButtonDefault
-          label="Button"
-          link="/"
+          label="Submit"
+          link="#"
           customClasses="max-w-1/2 bg-primary text-white px-10 py-3.5 lg:px-8 xl:px-10"
         />
       </div>
