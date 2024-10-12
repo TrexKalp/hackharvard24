@@ -33,9 +33,7 @@ export default function Home() {
 
   return (
     <DefaultLayout>
-      <div>
-        <ECommerce/>
-      </div>
+        <ECommerce/> 
     </DefaultLayout>
   );
 }
