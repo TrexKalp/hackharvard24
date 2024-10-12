@@ -1,8 +1,11 @@
 {
-  "/page": "app/page.js",
-  "/calendar/page": "app/calendar/page.js",
-  "/tables/page": "app/tables/page.js",
-  "/forms/form-layout/page": "app/forms/form-layout/page.js",
   "/profile/page": "app/profile/page.js",
-  "/forms/form-elements/page": "app/forms/form-elements/page.js"
+  "/tables/page": "app/tables/page.js",
+  "/charts/basic-chart/page": "app/charts/basic-chart/page.js",
+  "/auth/signin/page": "app/auth/signin/page.js",
+  "/forms/form-elements/page": "app/forms/form-elements/page.js",
+  "/calendar/page": "app/calendar/page.js",
+  "/ui-elements/alerts/page": "app/ui-elements/alerts/page.js",
+  "/ui-elements/buttons/page": "app/ui-elements/buttons/page.js",
+  "/page": "app/page.js"
 }
