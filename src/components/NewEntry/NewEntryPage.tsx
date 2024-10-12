@@ -13,8 +13,26 @@ import DatePickerTwo from "@/components/FormElements/DatePicker/DatePickerTwo";
 import DatePickerOne from "@/components/FormElements/DatePicker/DatePickerOne";
 import MultiSelect from "@/components/FormElements/MultiSelect";
 import SelectGroupTwo from "@/components/FormElements/SelectGroup/SelectGroupTwo";
-
+import AdmitDate from "../FormElements/DatePicker/AdmitDate";
+import DispatchDate from "../FormElements/DatePicker/DispatchDate";
+import { useEffect, useState } from "react";
+import { TimeInput } from "@nextui-org/date-input";
 const NewEntryPage = () => {
+  const [time, setTime] = useState<string>("");
+
+  useEffect(() => {
+    // Get the current time in HH:MM format
+    const currentTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    setTime(currentTime); // Set the current time
+  }, []);
+
+  // Event handler for time input changes
+  const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTime(event.target.value);
+  };
   return (
     <>
       <div className="grid grid-cols-1 gap-9">
@@ -23,43 +41,62 @@ const NewEntryPage = () => {
           <div className="rounded-[10px] border border-stroke bg-white shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-dark-3">
               <h3 className="font-medium text-dark dark:text-white">
-                Input Fields
+                New Patient Entry
               </h3>
             </div>
             <div className="flex flex-col gap-5.5 p-6.5">
               <div>
                 <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-                  Default Input
+                  Subject ID
                 </label>
                 <input
                   type="text"
-                  placeholder="Default Input"
+                  placeholder="Subject ID"
                   className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5.5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
                 />
               </div>
-
-              <div>
-                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-                  Active Input
+              <form className="mx-auto w-full">
+                <label
+                  htmlFor="time"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Admittance time:
                 </label>
-                <input
-                  type="text"
-                  placeholder="Active Input"
-                  className="w-full rounded-[7px] border-[1.5px] border-primary bg-transparent px-5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:bg-dark-2 dark:text-white"
-                />
-              </div>
-
-              <div>
-                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-                  Disabled label
+                <div className="relative">
+                  <input
+                    type="time"
+                    id="time"
+                    className="border leading-none border-gray-300 px-5 text-body-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary"
+                    min="09:00"
+                    max="18:00"
+                    value={time}
+                    onChange={handleTimeChange}
+                    required
+                  />
+                </div>
+              </form>
+              <AdmitDate />
+              <form className="mx-auto w-full">
+                <label
+                  htmlFor="time"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Dispatch time:
                 </label>
-                <input
-                  type="text"
-                  placeholder="Disabled label"
-                  disabled
-                  className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary dark:disabled:bg-dark"
-                />
-              </div>
+                <div className="relative">
+                  <input
+                    type="time"
+                    id="time"
+                    className="border leading-none border-gray-300 px-5 text-body-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary"
+                    min="09:00"
+                    max="18:00"
+                    value={time}
+                    onChange={handleTimeChange}
+                    required
+                  />
+                </div>
+              </form>
+              <DispatchDate />
             </div>
           </div>
 

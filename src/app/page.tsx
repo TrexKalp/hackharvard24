@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import React, { useEffect, useState } from "react";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 
+
 // export const metadata: Metadata = {
 //   title:
 //     "Next.js E-commerce Dashboard Page | NextAdmin - Next.js Dashboard Kit",
@@ -34,8 +35,6 @@ export default function Home() {
     <DefaultLayout>
       <div>
         <ECommerce/>
-        <h1>Welcome to the Home Page</h1>
-        <p>{message}</p>
       </div>
     </DefaultLayout>
   );
