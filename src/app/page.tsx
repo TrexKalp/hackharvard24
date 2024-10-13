@@ -1,39 +1,33 @@
-'use client'
+"use client";
 import ECommerce from "@/components/Dashboard/E-commerce";
-import { Metadata } from "next";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-
-
-// export const metadata: Metadata = {
-//   title:
-//     "Next.js E-commerce Dashboard Page | NextAdmin - Next.js Dashboard Kit",
-//   description: "This is Next.js Home page for NextAdmin Dashboard Kit",
-// };
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [message, setMessage] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null); // State to track authentication status
+  const [loading, setLoading] = useState<boolean>(true); // State to track loading
+  const router = useRouter(); // For navigation
 
   useEffect(() => {
-    fetch("/api/hello")
-      .then((response) => response.json())
-      .then((data) => {
-        setMessage(data.message);
-        setLoading(false);
-        console.log("Route API message:", data.message); // Console log the message
-      })
-      .catch((error) => {
-        console.error("Error fetching route message:", error);
-        setLoading(false);
-      });
-  }, []);
+    // Check for authentication token in localStorage
+    const token = localStorage.getItem('authToken'); // Assume 'authToken' is stored in localStorage
 
-  if (loading) return <div>Loading...</div>;
+    if (token) {
+      setIsAuthenticated(true); // If token exists, set user as authenticated
+    } else {
+      setIsAuthenticated(false); // If no token, redirect to sign-in
+      router.push("/signin");
+    }
+
+    setLoading(false); // Stop loading once authentication is checked
+  }, [router]);
+
+  if (loading) return <div>Loading...</div>; // Show loading while checking authentication
 
   return (
     <DefaultLayout>
-        <ECommerce/> 
+      {isAuthenticated ? <ECommerce /> : <div>Redirecting to Sign-in...</div>} {/* Show dashboard if authenticated */}
     </DefaultLayout>
   );
 }
