@@ -1,29 +1,27 @@
 import React from "react";
-import Link from "next/link";
 
 interface ButtonPropTypes {
   label: string;
-  link: string;
   customClasses: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
 }
 
 const ButtonDefault = ({
   label,
-  link,
   customClasses,
+  onClick,
   children,
 }: ButtonPropTypes) => {
   return (
-    <>
-      <Link
-        className={`inline-flex items-center justify-center gap-2.5 text-center font-medium hover:bg-opacity-90 ${customClasses}`}
-        href={link}
-      >
-        {children}
-        {label}
-      </Link>
-    </>
+    <button
+      type="submit"
+      className={`inline-flex items-center justify-center gap-2.5 text-center font-medium hover:bg-opacity-90 ${customClasses}`}
+      onClick={onClick}
+    >
+      {children}
+      {label}
+    </button>
   );
 };
 
