@@ -39,7 +39,7 @@ const ChartOne: React.FC = () => {
     fetchData(selectedOption);
 
     // Set an interval to fetch data every 5 seconds (5000 ms)
-    const intervalId = setInterval(() => fetchData(selectedOption), 3000);
+    const intervalId = setInterval(() => fetchData(selectedOption), 2000);
 
     // Cleanup function to clear the interval
     return () => clearInterval(intervalId);
