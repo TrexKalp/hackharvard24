@@ -48,7 +48,7 @@ const MapOne: React.FC = () => {
 
     return () => {
       if (vectorMapOne) {
-        vectorMapOne.destroy();
+        // vectorMapOne.destroy();
       } else {
         console.error("Vector map instance not found during cleanup");
       }

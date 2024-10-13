@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import OpenAI from "openai"; // Correct import for OpenAI
 
-// Dummy list of users with job positions and locations
 const users = [
   { id: 1, name: "Anon456", position: "Cardiologist", location: "Houston, TX" },
   {
@@ -32,7 +32,6 @@ const users = [
   },
 ];
 
-// Initial dummy chat history (now aligned with the `users` names)
 const initialChats = {
   1: [
     {
@@ -72,20 +71,20 @@ const initialChats = {
 };
 
 const DummyChatPage: React.FC = () => {
-  // Automatically select user "Anon456" (id: 1)
-  const [selectedUser, setSelectedUser] = useState<number>(1); // Auto-select Anon456
+  const [selectedUser, setSelectedUser] = useState<number>(1); // Default to user "Anon456"
   const [chats, setChats] = useState<{
     [key: number]: { sender: string; message: string }[];
   }>(initialChats);
   const [messageInput, setMessageInput] = useState<string>("");
 
-  const chatContainerRef = useRef<HTMLDivElement>(null); // Ref to the chat container
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleUserClick = (userId: number) => {
-    setSelectedUser(userId);
-  };
+  const openai = new OpenAI({
+    apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY, // Store your API key in .env.local
+    dangerouslyAllowBrowser: true, // Required for client-side use
+  });
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!selectedUser || messageInput.trim() === "") return;
 
     const newMessage = { sender: "You", message: messageInput };
@@ -97,27 +96,52 @@ const DummyChatPage: React.FC = () => {
     setChats(updatedChats);
     setMessageInput("");
 
-    // Simulate a dummy response after sending a message
-    setTimeout(() => {
-      const dummyResponses = [
-        "Have you considered increasing the patient's fluid intake for better hydration?",
-        "Switching to a newer class of drugs may reduce side effects.",
-        "In this case, adjusting the dosage could yield better results.",
-        "Consider recommending physical therapy to manage the pain.",
-        "Using an anti-inflammatory regimen might alleviate symptoms.",
-      ];
+    // Fetch GPT response
+    const gptResponse = await fetchGptResponse(updatedChats[selectedUser]);
+    const gptReply = {
+      sender: users.find((u) => u.id === selectedUser)?.name || "GPT",
+      message: gptResponse,
+    };
 
-      const dummyResponse = {
-        sender: users.find((u) => u.id === selectedUser)?.name || "Unknown",
-        message:
-          dummyResponses[Math.floor(Math.random() * dummyResponses.length)],
-      };
-      const updatedChatsWithReply = {
-        ...updatedChats,
-        [selectedUser]: [...updatedChats[selectedUser], dummyResponse],
-      };
-      setChats(updatedChatsWithReply);
-    }, 1000);
+    const updatedChatsWithGptReply = {
+      ...updatedChats,
+      [selectedUser]: [...updatedChats[selectedUser], gptReply],
+    };
+
+    setChats(updatedChatsWithGptReply);
+  };
+
+  // Function to call OpenAI API with full conversation context
+  const fetchGptResponse = async (
+    conversation: { sender: string; message: string }[]
+  ) => {
+    try {
+      const messages = conversation.map((chat) => ({
+        role: chat.sender === "You" ? "user" : "assistant",
+        content: chat.message,
+      }));
+
+      // Adding system instruction to limit response to one sentence
+      const completion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are simulating a chat as a medical expert. Limit each response to one sentence and do not say anything along the lines of I am here to help and if you have more questions feel free to ask since you must act as a medical expert.",
+          },
+          ...messages,
+        ],
+      });
+
+      return (
+        completion.choices[0]?.message?.content ||
+        "Sorry, I couldn't process your request."
+      );
+    } catch (error) {
+      console.error("Error fetching GPT response:", error);
+      return "An error occurred while processing the request.";
+    }
   };
 
   // Scroll to bottom when new message is added
@@ -126,7 +150,7 @@ const DummyChatPage: React.FC = () => {
       chatContainerRef.current.scrollTop =
         chatContainerRef.current.scrollHeight;
     }
-  }, [chats]); // This effect will run when `chats` changes
+  }, [chats]);
 
   const selectedUserProfile = users.find((user) => user.id === selectedUser);
 
@@ -134,13 +158,13 @@ const DummyChatPage: React.FC = () => {
     <DefaultLayout>
       <Breadcrumb pageName="Anonymous Medical Chat" />
       <div className="flex h-[600px] max-h-[600px] dark:bg-gray-900">
-        {/* User List with Profile Box */}
+        {/* User List */}
         <div className="w-1/4 bg-gray-100 dark:bg-gray-800 p-4 border-r flex flex-col dark:border-gray-700">
           {/* Profile Box */}
-          {selectedUserProfile ? (
+          {selectedUserProfile && (
             <div className="flex flex-col items-center bg-gray-100 dark:bg-gray-700 p-3 mb-4 rounded-lg shadow-md">
               <img
-                src="/images/user/blue-icon.png" // Assuming you have this image in your public folder
+                src="/images/user/blue-icon.png"
                 alt="Anonymous profile"
                 className="w-16 h-16 rounded-full mb-3"
               />
@@ -153,10 +177,6 @@ const DummyChatPage: React.FC = () => {
                   {selectedUserProfile.location}
                 </p>
               </div>
-            </div>
-          ) : (
-            <div className="mb-4 text-gray-800 dark:text-gray-200">
-              <h2 className="font-bold">Select a User to Start Chatting</h2>
             </div>
           )}
 
@@ -173,15 +193,14 @@ const DummyChatPage: React.FC = () => {
                     ? "bg-blue-200 dark:bg-blue-700"
                     : "hover:bg-gray-200 dark:hover:bg-gray-700"
                 }`}
-                onClick={() => handleUserClick(user.id)}
+                onClick={() => setSelectedUser(user.id)}
               >
                 {user.name}
               </li>
             ))}
           </ul>
-          {/* Add New Chat Button */}
           <button
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-600"
+            className="mt-4 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-600"
             onClick={() => setSelectedUser(null)}
           >
             Start New Chat
@@ -193,45 +212,28 @@ const DummyChatPage: React.FC = () => {
           {/* Chat History */}
           <div
             className="flex-1 bg-white dark:bg-gray-700 p-4 border rounded-lg overflow-y-auto h-[600px] max-h-[600px] dark:border-gray-600"
-            ref={chatContainerRef} // Attach the ref to the chat history container
+            ref={chatContainerRef}
           >
             {selectedUserProfile ? (
               <>
                 <h3 className="font-bold mb-4 text-gray-800 dark:text-gray-200">
-                  {selectedUserProfile?.name}'s Chat
+                  {selectedUserProfile.name}'s Chat
                 </h3>
                 <div className="space-y-4">
                   {selectedUser && chats[selectedUser]?.length ? (
                     chats[selectedUser].map((chat, index) => (
                       <div
                         key={index}
-                        className={`flex ${
-                          chat.sender === "You"
-                            ? "justify-end"
-                            : "justify-start"
-                        }`}
+                        className={`flex ${chat.sender === "You" ? "justify-end" : "justify-start"}`}
                       >
                         <div
                           className={`max-w-[60%] p-2 rounded-lg relative ${
                             chat.sender === "You"
-                              ? "bg-blue-500 text-white"
+                              ? "bg-blue-700 text-white"
                               : "bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-100"
                           }`}
-                          style={{
-                            borderRadius: "20px",
-                            padding: "10px 20px",
-                            position: "relative",
-                          }}
                         >
                           <strong>{chat.sender}</strong>: {chat.message}
-                          {/* Speech bubble pointer */}
-                          <div
-                            className={`absolute w-0 h-0 border-t-8 border-b-8 ${
-                              chat.sender === "You"
-                                ? "border-l-[10px] border-l-blue-500 right-[-8px] top-[10px]"
-                                : "border-r-[10px] border-r-gray-200 dark:border-r-gray-600 left-[-8px] top-[10px]"
-                            } border-transparent`}
-                          />
                         </div>
                       </div>
                     ))
@@ -265,7 +267,7 @@ const DummyChatPage: React.FC = () => {
                 placeholder="Type your message..."
               />
               <button
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className="px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-600"
                 onClick={handleSendMessage}
               >
                 Send
