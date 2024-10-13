@@ -113,7 +113,7 @@ const dataStatsList = [
     ),
     color: "#18BFFF",
     title: "Avg. Length of Stay",
-    value: "4.312 days",
+    value: "4.31 days",
     growthRate: -0.95,
   },
 ];
