@@ -47,7 +47,7 @@ const dataStatsList = [
     ),
     color: "#FF9C55",
     title: "Bed Occupancy",
-    value: "79%",
+    value: "79.3%",
     growthRate: 4.35,
   },
   {
@@ -113,7 +113,7 @@ const dataStatsList = [
     ),
     color: "#18BFFF",
     title: "Avg. Length of Stay",
-    value: "4.312",
+    value: "4.312 days",
     growthRate: -0.95,
   },
 ];
