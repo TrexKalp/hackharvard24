@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-const currentUser = "657169285"; // Replace with actual current user ID
+const currentUser = "HealthPro456"; // Replace with actual current user ID
 
 // List of names
 const names = [

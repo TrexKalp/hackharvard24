@@ -104,41 +104,6 @@ const DummyChatPage: React.FC = () => {
         "In this case, adjusting the dosage could yield better results.",
         "Consider recommending physical therapy to manage the pain.",
         "Using an anti-inflammatory regimen might alleviate symptoms.",
-        "I’ve had success with reducing the frequency of certain meds.",
-        "Suggest a combination therapy approach for more control.",
-        "How about a slow-release medication to prevent spikes?",
-        "I recommend a complete dietary evaluation alongside medication.",
-        "What about adding a steroid course to the treatment?",
-        "A low-intensity exercise plan may aid in recovery.",
-        "Has the patient tried non-opioid analgesics for pain relief?",
-        "You might want to explore nerve-block techniques.",
-        "Reviewing the patient’s other medications for interactions could help.",
-        "Consider an advanced imaging test to reassess their condition.",
-        "Trying out a different class of antiemetics might reduce nausea.",
-        "Has the patient undergone any genetic testing for medication sensitivity?",
-        "Switching to an extended-release formulation could help with compliance.",
-        "How about exploring a more patient-centered therapy plan?",
-        "Monitor liver function more closely with these meds.",
-        "Suggest reducing opioid use to manage side effects.",
-        "Tailoring a specific exercise regimen could improve outcomes.",
-        "Consider implementing telemedicine for closer monitoring.",
-        "A higher fiber intake could alleviate gastrointestinal symptoms.",
-        "Have you considered a second-line treatment option?",
-        "Maybe increasing the duration of therapy will yield better results.",
-        "Switching to an herbal supplement like ginger may help.",
-        "Suggest mindfulness practices to reduce anxiety-related symptoms.",
-        "Low-dose corticosteroids may help manage inflammation.",
-        "You might want to try a novel immunotherapy approach.",
-        "A collaborative care model could help address the multi-faceted issues.",
-        "Suggest regular blood work to monitor any adverse effects.",
-        "I’ve seen great results using acupuncture in cases like these.",
-        "How about implementing a plant-based diet to support treatment?",
-        "Vitamin supplementation, like vitamin D, might help with bone health.",
-        "A bone density scan may give more insights into the fractures.",
-        "Encourage a pain diary to help track pain patterns.",
-        "Have you tried a transdermal patch for sustained medication release?",
-        "Consider palliative care options for the patient's comfort.",
-        "Encourage regular mobility exercises to improve circulation.",
       ];
 
       const dummyResponse = {
@@ -167,41 +132,45 @@ const DummyChatPage: React.FC = () => {
   return (
     <DefaultLayout>
       <Breadcrumb pageName="Anonymous Medical Chat" />
-      <div className="flex h-[600px] max-h-[600px]">
+      <div className="flex h-[600px] max-h-[600px] dark:bg-gray-900">
         {/* User List with Profile Box */}
-        <div className="w-1/4 bg-gray-100 p-4 border-r flex flex-col">
+        <div className="w-1/4 bg-gray-100 dark:bg-gray-800 p-4 border-r flex flex-col dark:border-gray-700">
           {/* Profile Box */}
           {selectedUserProfile ? (
-            <div className="flex flex-col items-center bg-gray-100 p-3 mb-4 rounded-lg shadow-md">
+            <div className="flex flex-col items-center bg-gray-100 dark:bg-gray-700 p-3 mb-4 rounded-lg shadow-md">
               <img
                 src="/images/user/blue-icon.png" // Assuming you have this image in your public folder
                 alt="Anonymous profile"
                 className="w-16 h-16 rounded-full mb-3"
               />
-              <div className="text-center">
+              <div className="text-center text-gray-800 dark:text-gray-200">
                 <p className="text-sm font-bold">{selectedUserProfile.name}</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   {selectedUserProfile.position}
                 </p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   {selectedUserProfile.location}
                 </p>
               </div>
             </div>
           ) : (
-            <div className="mb-4">
+            <div className="mb-4 text-gray-800 dark:text-gray-200">
               <h2 className="font-bold">Select a User to Start Chatting</h2>
             </div>
           )}
 
           {/* User List */}
-          <h2 className="font-bold my-4">Network:</h2>
-          <ul className="flex-1 overflow-y-auto">
+          <h2 className="font-bold my-4 text-gray-800 dark:text-gray-200">
+            Network:
+          </h2>
+          <ul className="flex-1 overflow-y-auto text-gray-800 dark:text-gray-200">
             {users.map((user) => (
               <li
                 key={user.id}
                 className={`p-2 cursor-pointer ${
-                  selectedUser === user.id ? "bg-blue-200" : "hover:bg-gray-200"
+                  selectedUser === user.id
+                    ? "bg-blue-200 dark:bg-blue-700"
+                    : "hover:bg-gray-200 dark:hover:bg-gray-700"
                 }`}
                 onClick={() => handleUserClick(user.id)}
               >
@@ -222,12 +191,12 @@ const DummyChatPage: React.FC = () => {
         <div className="w-3/4 flex flex-col px-4">
           {/* Chat History */}
           <div
-            className="flex-1 bg-white p-4 border rounded-lg overflow-y-auto h-[600px] max-h-[600px]"
+            className="flex-1 bg-white dark:bg-gray-700 p-4 border rounded-lg overflow-y-auto h-[600px] max-h-[600px] dark:border-gray-600"
             ref={chatContainerRef} // Attach the ref to the chat history container
           >
             {selectedUserProfile ? (
               <>
-                <h3 className="font-bold mb-4">
+                <h3 className="font-bold mb-4 text-gray-800 dark:text-gray-200">
                   {selectedUserProfile?.name}'s Chat
                 </h3>
                 <div className="space-y-4">
@@ -245,7 +214,7 @@ const DummyChatPage: React.FC = () => {
                           className={`max-w-[60%] p-2 rounded-lg relative ${
                             chat.sender === "You"
                               ? "bg-blue-500 text-white"
-                              : "bg-gray-200 text-gray-800"
+                              : "bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-100"
                           }`}
                           style={{
                             borderRadius: "20px",
@@ -259,19 +228,23 @@ const DummyChatPage: React.FC = () => {
                             className={`absolute w-0 h-0 border-t-8 border-b-8 ${
                               chat.sender === "You"
                                 ? "border-l-[10px] border-l-blue-500 right-[-8px] top-[10px]"
-                                : "border-r-[10px] border-r-gray-200 left-[-8px] top-[10px]"
+                                : "border-r-[10px] border-r-gray-200 dark:border-r-gray-600 left-[-8px] top-[10px]"
                             } border-transparent`}
                           />
                         </div>
                       </div>
                     ))
                   ) : (
-                    <p>No messages yet. Start the conversation!</p>
+                    <p className="text-gray-800 dark:text-gray-200">
+                      No messages yet. Start the conversation!
+                    </p>
                   )}
                 </div>
               </>
             ) : (
-              <p>Select a user to view or start a chat.</p>
+              <p className="text-gray-800 dark:text-gray-200">
+                Select a user to view or start a chat.
+              </p>
             )}
           </div>
 
@@ -287,7 +260,7 @@ const DummyChatPage: React.FC = () => {
                     handleSendMessage();
                   }
                 }}
-                className="w-full p-2 border rounded-lg"
+                className="w-full p-2 border rounded-lg dark:bg-gray-600 dark:text-white dark:border-gray-500"
                 placeholder="Type your message..."
               />
               <button
