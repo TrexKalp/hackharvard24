@@ -42,9 +42,9 @@ const CalendarBox = () => {
                 <span className="font-medium text-dark dark:text-white">1</span>
                 <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
                   <span className="event-name font-medium text-dark dark:text-white">
-                    Patient #9A3AF1
+                    Critical #9A3AF1
                   </span>
-                  <span className="time text-sm">October 17</span>
+                  <span className="time text-sm">October 1</span>
                   <span className="time text-sm">Endocarditis</span>
                   <div className="flex gap-2 items-center">
                     <span className="time text-sm">Prepare Search </span>
@@ -67,6 +67,27 @@ const CalendarBox = () => {
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">3</span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[180%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #E2E8F0 Transfer
+                  </span>
+                  <span className="time text-sm">October 3-4</span>
+                  <span className="time text-sm">Infected Wounds</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">4</span>
@@ -76,6 +97,27 @@ const CalendarBox = () => {
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">6</span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #J4141
+                  </span>
+                  <span className="time text-sm">October 6</span>
+                  <span className="time text-sm">Osteomyelitis</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">7</span>
@@ -89,6 +131,27 @@ const CalendarBox = () => {
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">9</span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #FSD11
+                  </span>
+                  <span className="time text-sm">October 9</span>
+                  <span className="time text-sm">Osteomyelitis</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">
@@ -104,11 +167,53 @@ const CalendarBox = () => {
                 <span className="font-medium text-dark dark:text-white">
                   12
                 </span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #CJ512
+                  </span>
+                  <span className="time text-sm">October 12</span>
+                  <span className="time text-sm">Pneumonia</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">
                   13
                 </span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #1JA14K
+                  </span>
+                  <span className="time text-sm">October 13</span>
+                  <span className="time text-sm">Septicemia</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">
@@ -135,10 +240,10 @@ const CalendarBox = () => {
                 </span>
                 <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
                   <span className="event-name font-medium text-dark dark:text-white">
-                    Patient #5750F1
+                    Critical #5750F1
                   </span>
                   <span className="time text-sm">October 17</span>
-                  <span className="time text-sm">Peritonitis</span>
+                  <span className="time text-sm">Fasciitis</span>
                   <div className="flex gap-2 items-center">
                     <span className="time text-sm">Prepare Search </span>
                     <svg
@@ -159,6 +264,27 @@ const CalendarBox = () => {
                 <span className="font-medium text-dark dark:text-white">
                   18
                 </span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #C8DD1
+                  </span>
+                  <span className="time text-sm">October 18</span>
+                  <span className="time text-sm">Cholangitis</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">
@@ -188,25 +314,77 @@ const CalendarBox = () => {
                 <span className="font-medium text-dark dark:text-white">
                   23
                 </span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #C8DD1
+                  </span>
+                  <span className="time text-sm">October 23</span>
+                  <span className="time text-sm">Abscess</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">
                   24
                 </span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #1345F1
+                  </span>
+                  <span className="time text-sm">October 24</span>
+                  <span className="time text-sm">Pancreatitis</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">
                   25
                 </span>
-                <div className="group h-16 w-full flex-grow cursor-pointer py-1 md:h-30">
-                  <span className="group-hover:text-primary md:hidden">
-                    More
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #GS141
                   </span>
-                  <div className="event invisible absolute left-2 z-99 mb-1 flex w-[300%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[290%] md:opacity-100">
-                    <span className="event-name font-medium text-dark dark:text-white">
-                      App Design
-                    </span>
-                    <span className="time text-sm">25 Dec - 27 Dec</span>
+                  <span className="time text-sm">October 25</span>
+                  <span className="time text-sm">Liver Abscess</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
                   </div>
                 </div>
               </td>
@@ -214,11 +392,53 @@ const CalendarBox = () => {
                 <span className="font-medium text-dark dark:text-white">
                   26
                 </span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #ADJ159
+                  </span>
+                  <span className="time text-sm">October 26</span>
+                  <span className="time text-sm">Cystitis</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">
                   27
                 </span>
+                <div className="event invisible absolute left-2 z-99 mb-1 flex w-[100%] flex-col rounded-r-[5px] border-l-[3px] border-primary bg-gray-2 px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-dark-2 md:visible md:w-[90%] md:opacity-100">
+                  <span className="event-name font-medium text-dark dark:text-white">
+                    Critical #SDF12
+                  </span>
+                  <span className="time text-sm">October 27</span>
+                  <span className="time text-sm">Pyelonephritis</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="time text-sm">Prepare Search </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-info-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
+                </div>
               </td>
               <td className="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray-2 dark:border-dark-3 dark:hover:bg-dark-2 md:h-25 md:p-6 xl:h-31">
                 <span className="font-medium text-dark dark:text-white">
