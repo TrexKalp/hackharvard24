@@ -30,7 +30,7 @@ const NewEntry = () => {
   return (
     <DefaultLayout>
       <div className="mx-auto w-full">
-        <Breadcrumb pageName="Past Searches" />
+        <Breadcrumb pageName="Patient Database" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {patients.map((patient) => (
             <PatientCard
