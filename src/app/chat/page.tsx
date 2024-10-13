@@ -128,7 +128,7 @@ const DummyChatPage: React.FC = () => {
           {
             role: "system",
             content:
-              "You are simulating a chat as a medical expert. Limit each response to one sentence and do not say anything along the lines of I am here to help and if you have more questions feel free to ask since you must act as a medical expert.",
+              "YOU ARE SIMULATING A CHAT AS A LESS EXPERIENCED DOCTOR ASKING QUESTIONS TO A MORE EXPERIENCED DOCTOR. LIMIT EACH RESPONSE TO ONE/TWO SENTENCES AND DO NOT SAY ANYTHING ALONG THE LINES OF I AM HERE TO HELP AND IF YOU HAVE MORE QUESTIONS FEEL FREE TO ASK SINCE YOU MUST ACT AS A LESS EXPERIENCED DOCTOR.",
           },
           ...messages,
         ],
