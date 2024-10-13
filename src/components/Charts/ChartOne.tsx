@@ -2,26 +2,87 @@ import { ApexOptions } from "apexcharts";
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import DefaultSelectOption from "@/components/SelectOption/DefaultSelectOption";
+import { useEffect, useState } from "react";
 
 const ChartOne: React.FC = () => {
-  const series = [
-    {
-      name: "Received Amount",
-      data: [0, 20, 35, 45, 35, 55, 65, 50, 65, 75, 60, 75],
-    },
-    {
-      name: "Due Amount",
-      data: [15, 9, 17, 32, 25, 68, 80, 68, 84, 94, 74, 62],
-    },
-  ];
+  const [chartData, setChartData] = useState<{ labels: string[]; series: number[][] } | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string>('defibrillator');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+
+  // Function to fetch data from the API
+  const fetchData = async (option: string) => {
+    try {
+      const res = await fetch('/api/database');
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const result = await res.json();
+
+      // Process data into a format that ApexCharts can use
+      const labels = result.data.map((item: { timestamp: string }) => item.timestamp);
+      const values = result.data.map((item: { [key: string]: number }) => item[option]);
+
+      const data = {
+        labels,
+        series: [values],
+      };
+
+      setChartData(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch data for the first time
+    fetchData(selectedOption);
+
+    // Set an interval to fetch data every 5 seconds (5000 ms)
+    const intervalId = setInterval(() => fetchData(selectedOption), 3000);
+
+    // Cleanup function to clear the interval
+    return () => clearInterval(intervalId);
+  }, [selectedOption]);
+
+  const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption(e.target.value);
+    setIsDropdownOpen(false); // Close the dropdown after selection
+  };
+
+  interface Option {
+    value: string;
+    label: string;
+  }
+
+  interface DefaultSelectOptionProps {
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    options: Option[];
+  }
+
+  const DefaultSelectOption: React.FC<DefaultSelectOptionProps> = ({ value, onChange, options }) => {
+    return (
+      <select value={value} onChange={onChange}>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    );
+  };
+
+  const series = chartData ? [{ name: "Received Amount", data: chartData.series[0] }] : [{ name: "Received Amount", data: [] }];
 
   const options: ApexOptions = {
+    // ApexCharts options remain the same
     legend: {
       show: false,
       position: "top",
       horizontalAlign: "left",
     },
-    colors: ["#5750F1", "#0ABEF9"],
+    colors: ["#5750F1"],
     chart: {
       fontFamily: "Satoshi, sans-serif",
       height: 310,
@@ -57,7 +118,6 @@ const ChartOne: React.FC = () => {
     stroke: {
       curve: "smooth",
     },
-
     markers: {
       size: 0,
     },
@@ -79,44 +139,32 @@ const ChartOne: React.FC = () => {
     },
     tooltip: {
       fixed: {
-        enabled: !1,
+        enabled: false,
       },
       x: {
-        show: !1,
+        show: false,
       },
       y: {
         title: {
-          formatter: function (e) {
+          formatter: function () {
             return "";
           },
         },
       },
       marker: {
-        show: !1,
+        show: false,
       },
     },
     xaxis: {
       type: "category",
-      categories: [
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-      ],
+      categories: chartData ? chartData.labels : [],
       axisBorder: {
         show: false,
       },
       axisTicks: {
         show: false,
       },
+      tickAmount: 10,
     },
     yaxis: {
       title: {
@@ -137,9 +185,24 @@ const ChartOne: React.FC = () => {
         </div>
         <div className="flex items-center gap-2.5">
           <p className="font-medium uppercase text-dark dark:text-dark-6">
-            Short by:
+            Supply:
           </p>
-          <DefaultSelectOption options={["Monthly", "Yearly"]} />
+          <DefaultSelectOption 
+            value={selectedOption} 
+            onChange={handleDropdownChange}
+            options={[
+              { value: 'defibrillator', label: 'Defibrillator' },
+              { value: 'oxygen_tank', label: 'Oxygen Tank' },
+              { value: 'suction_device', label: 'Suction Device' },
+              { value: 'iv_fluid', label: 'Iv Fluid' },
+              { value: 'medication_drawer', label: 'Medication Drawer' },
+              { value: 'intubation_kit', label: 'Intubation Kit' },
+              { value: 'syringe', label: 'Syringe' },
+              { value: 'bandages', label: 'Bandages' },
+              { value: 'gloves', label: 'Gloves' },
+              { value: 'stethoscope', label: 'Stethoscope' }
+            ]} 
+          />
         </div>
       </div>
       <div>
