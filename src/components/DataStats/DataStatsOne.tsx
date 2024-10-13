@@ -24,7 +24,7 @@ const dataStatsList = [
       </svg>
     ),
     color: "#3FD97F",
-    title: "Total Views",
+    title: "Visits YTD",
     value: "3.456K",
     growthRate: 0.43,
   },
@@ -46,8 +46,8 @@ const dataStatsList = [
       </svg>
     ),
     color: "#FF9C55",
-    title: "Total Profit",
-    value: "$42.2K",
+    title: "Bed Occupancy",
+    value: "79.3%",
     growthRate: 4.35,
   },
   {
@@ -74,8 +74,8 @@ const dataStatsList = [
       </svg>
     ),
     color: "#8155FF",
-    title: "Total Product",
-    value: "2.450",
+    title: "Telemedicine Calls YTD",
+    value: "2.450K",
     growthRate: 2.59,
   },
   {
@@ -112,8 +112,8 @@ const dataStatsList = [
       </svg>
     ),
     color: "#18BFFF",
-    title: "Total Users",
-    value: "3.465",
+    title: "Avg. Length of Stay",
+    value: "4.312 days",
     growthRate: -0.95,
   },
 ];
