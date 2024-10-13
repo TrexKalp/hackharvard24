@@ -28,7 +28,7 @@ const ChartThree: React.FC = () => {
             total: {
               show: true,
               showAlways: true,
-              label: "Visitors",
+              label: "Patients",
               fontSize: "16px",
               fontWeight: "400",
             },
