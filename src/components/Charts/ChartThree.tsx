@@ -12,7 +12,7 @@ const ChartThree: React.FC = () => {
       type: "donut",
     },
     colors: ["#5750F1", "#5475E5", "#8099EC", "#ADBCF2"],
-    labels: ["Desktop", "Tablet", "Mobile", "Unknown"],
+    labels: ["Stable", "Urgent", "Emergency", "Outpatient"],
     legend: {
       show: false,
       position: "bottom",
@@ -69,7 +69,7 @@ const ChartThree: React.FC = () => {
       <div className="mb-9 justify-between gap-4 sm:flex">
         <div>
           <h4 className="text-body-2xlg font-bold text-dark dark:text-white">
-            Used Devices
+            Patient Types
           </h4>
         </div>
         <div>
@@ -89,7 +89,7 @@ const ChartThree: React.FC = () => {
             <div className="flex w-full items-center">
               <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-blue"></span>
               <p className="flex w-full justify-between text-body-sm font-medium text-dark dark:text-dark-6">
-                <span> Desktop </span>
+                <span> Stable </span>
                 <span> 65% </span>
               </p>
             </div>
@@ -98,7 +98,7 @@ const ChartThree: React.FC = () => {
             <div className="flex w-full items-center">
               <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-blue-light"></span>
               <p className="flex w-full justify-between text-body-sm font-medium text-dark dark:text-dark-6">
-                <span> Tablet </span>
+                <span> Urgent </span>
                 <span> 34% </span>
               </p>
             </div>
@@ -107,7 +107,7 @@ const ChartThree: React.FC = () => {
             <div className="flex w-full items-center">
               <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-blue-light-2"></span>
               <p className="flex w-full justify-between text-body-sm font-medium text-dark dark:text-dark-6">
-                <span> Mobile </span>
+                <span> Emergency </span>
                 <span> 45% </span>
               </p>
             </div>
@@ -116,7 +116,7 @@ const ChartThree: React.FC = () => {
             <div className="flex w-full items-center">
               <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-blue-light-3"></span>
               <p className="flex w-full justify-between text-body-sm font-medium text-dark dark:text-dark-6">
-                <span> Unknown </span>
+                <span> Outpatient </span>
                 <span> 12% </span>
               </p>
             </div>
