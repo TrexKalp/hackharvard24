@@ -3,12 +3,8 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import HorizontalBarChart from "@/components/SmartSearch";
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import PatientCard from "@/components/Patient/PatientCard";
-import SimilarPatient from "@/components/Patient/SimilarPatient";
 
-const SmartSearchPage: React.FC = () => {
+const ResultPage = () => {
   const searchParams = useSearchParams();
   const [apiResult, setApiResult] = useState<any>(null);
 
@@ -22,19 +18,15 @@ const SmartSearchPage: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Smart Search" />
       <div>
         {apiResult ? (
-          <>
-            <HorizontalBarChart data={apiResult} /> {/* Pass the apiResult to the chart */}
-          </>
+          <pre>{JSON.stringify(apiResult, null, 2)}</pre> // Displaying the JSON result
         ) : (
           <p>Loading...</p>
         )}
       </div>
-      <SimilarPatient />
     </DefaultLayout>
   );
 };
 
-export default SmartSearchPage;
+export default ResultPage;

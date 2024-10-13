@@ -59,24 +59,51 @@ const NewEntryPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Format fields for API call
+    const {
+      admission_type,
+      admission_location,
+      discharge_location,
+      insurance,
+      language,
+      ethnicity,
+      diagnosis,
+      report,
+    } = formData;
+
+    const formattedString = [
+      admission_type || "NaN",
+      admission_location || "NaN",
+      discharge_location || "NaN",
+      insurance || "NaN",
+      language || "NaN",
+      ethnicity || "NaN",
+      diagnosis || "NaN",
+      report || "NaN",
+    ].join(";");
+
     try {
-      const response = await fetch("/api/submit-entry", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      // Make the API call
+      const response = await fetch(
+        `http://localhost:8000/?new_text=${encodeURIComponent(formattedString)}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch data from the API.");
+      }
+
+      const apiResult = await response.json();
+
+      // Build the URL with query parameters
+      const queryParams = new URLSearchParams({
+        result: JSON.stringify(apiResult),
       });
 
-      if (response.ok) {
-        alert("Data submitted successfully");
-        router.push("/"); // Redirect to the success page
-      } else {
-        alert("Failed to submit data");
-      }
+      // Redirect to result page with query
+      router.push(`/smart-search?${queryParams.toString()}`);
     } catch (error) {
-      console.error("Error submitting form data:", error);
-      alert("Error submitting data");
+      console.error("Error submitting form:", error);
+      alert("Error during submission");
     }
   };
 

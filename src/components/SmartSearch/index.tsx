@@ -1,13 +1,15 @@
-'use client'
-import React, { useEffect, useState } from 'react';
-import ApexCharts from 'react-apexcharts';
-import { ApexOptions } from 'apexcharts';
-import SimilarPatient from '../Patient/SimilarPatient';
+import React, { useEffect, useState } from "react";
+import ApexCharts from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
 
-const HorizontalBarChart: React.FC = () => {
+interface HorizontalBarChartProps {
+  data: any;
+}
+
+const HorizontalBarChart: React.FC<HorizontalBarChartProps> = ({ data }) => {
   const [options, setOptions] = useState<ApexOptions>({
     chart: {
-      type: 'bar',
+      type: "bar",
       height: 300,
       toolbar: {
         show: false,
@@ -18,14 +20,14 @@ const HorizontalBarChart: React.FC = () => {
     },
     series: [
       {
-        name: 'Sales',
-        data: [23000, 44000, 55000, 57000, 56000, 61000, 58000, 63000, 60000, 66000, 34000, 78000],
+        name: "Similarity Score",
+        data: [], // This will be set dynamically
       },
     ],
     plotOptions: {
       bar: {
         horizontal: true,
-        columnWidth: '16px',
+        columnWidth: "16px",
         borderRadius: 0,
       },
     },
@@ -38,84 +40,66 @@ const HorizontalBarChart: React.FC = () => {
     stroke: {
       show: true,
       width: 2,
-      colors: ['transparent'],
+      colors: ["transparent"],
     },
     xaxis: {
-      categories: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ],
+    //   min: 0.5,
+    //   max: 1,
+      categories: [], // This will be set dynamically
       labels: {
         style: {
-          colors: '#9ca3af',
-          fontSize: '13px',
-          fontFamily: 'Inter, ui-sans-serif',
+          colors: "#9ca3af",
+          fontSize: "13px",
+          fontFamily: "Inter, ui-sans-serif",
           fontWeight: 400,
         },
         offsetX: -2,
-        formatter: (value) => (value >= 1000 ? `${value / 1000}k` : value),
       },
     },
     yaxis: {
       labels: {
-        align: 'left',
+        align: "left",
         style: {
-          colors: '#9ca3af',
-          fontSize: '13px',
-          fontFamily: 'Inter, ui-sans-serif',
+          colors: "#9ca3af",
+          fontSize: "13px",
+          fontFamily: "Inter, ui-sans-serif",
           fontWeight: 400,
         },
         offsetX: -10,
-        formatter: (title) => (typeof title === 'string' ? title.slice(0, 3) : title),
       },
     },
     tooltip: {
       y: {
-        formatter: (value) => `$${value >= 1000 ? `${value / 1000}k` : value}`,
+        formatter: (value) => `${(value * 100).toFixed(2)}%`, // Display as percentage
       },
     },
   });
 
-  const [darkMode, setDarkMode] = useState(false);
-
   useEffect(() => {
-    // Adjust options for dark mode
-    const darkModeOptions = {
-      colors: ['#3b82f6'],
-      xaxis: {
-        labels: {
-          style: {
-            colors: darkMode ? '#a3a3a3' : '#9ca3af',
-          },
-        },
-      },
-      yaxis: {
-        labels: {
-          style: {
-            colors: darkMode ? '#a3a3a3' : '#9ca3af',
-          },
-        },
-      },
-      grid: {
-        borderColor: darkMode ? '#404040' : '#e5e7eb',
-      },
-    };
+    if (data && data.top_10_closest) {
+      const categories = data.top_10_closest.map(
+        (_, index) => `Patient ${index + 1}`
+      );
+      const similarityScores = data.top_10_closest.map(
+        (patient: any) => patient.similarity_score
+      );
 
-    setOptions((prev) => ({
-      ...prev,
-      ...darkModeOptions,
-    }));
-  }, [darkMode]);
+      // Update the chart options dynamically
+      setOptions((prevOptions) => ({
+        ...prevOptions,
+        xaxis: {
+          ...prevOptions.xaxis,
+          categories,
+        },
+        series: [
+          {
+            name: "Similarity Score",
+            data: similarityScores,
+          },
+        ],
+      }));
+    }
+  }, [data]);
 
   return (
     <div>
@@ -125,7 +109,6 @@ const HorizontalBarChart: React.FC = () => {
         type="bar"
         height={300}
       />
-      <SimilarPatient />
     </div>
   );
 };
