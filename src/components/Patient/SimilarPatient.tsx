@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/navigation"; // Assuming you're using Next.js for navigation
 
 interface SimilarPatientProps {
   patientId: number;
@@ -25,46 +26,68 @@ const SimilarPatient: React.FC<SimilarPatientProps> = ({
   diagnosis,
   similarityScore,
 }) => {
-  return (
-    <article className="rounded-xl bg-white dark:bg-gray-800 p-4 ring ring-indigo-50 dark:ring-gray-700 sm:p-6 lg:p-8">
-      <div className="flex items-start sm:gap-8">
-        <div>
-          <strong className="rounded border border-indigo-500 dark:border-indigo-400 bg-indigo-500 dark:bg-indigo-400 px-3 py-1.5 text-[10px] font-medium text-white">
-            Patient ID: {patientId}
-          </strong>
+  const router = useRouter();
 
-          <h3 className="mt-4 text-lg font-medium sm:text-xl">
-            <a href="#" className="hover:underline text-indigo-600 dark:text-indigo-400">
-              {`Admission Type: ${admissionType}`}
-            </a>
+  const handleChatClick = () => {
+    router.push(`/chat?patientId=${patientId}`);
+  };
+
+  return (
+    <article className="rounded-2xl bg-white dark:bg-gray-900 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 p-6 transition-transform transform hover:scale-105 hover:shadow-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:gap-6">
+        <div className="flex-1">
+          <span className="inline-block rounded-full bg-indigo-500 dark:bg-indigo-400 text-white text-xs px-3 py-1">
+            Patient ID: {patientId}
+          </span>
+
+          <h3 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
+            Admission Type: {admissionType}
           </h3>
 
-          <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">
-            <strong>Admission Location:</strong> {admissionLocation}
-          </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            <strong>Discharge Location:</strong> {dischargeLocation}
-          </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            <strong>Insurance:</strong> {insurance}
-          </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            <strong>Religion:</strong> {religion}
-          </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            <strong>Marital Status:</strong> {maritalStatus}
-          </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            <strong>Race:</strong> {race}
-          </p>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            <strong>Diagnosis:</strong> {diagnosis}
-          </p>
-
-          <div className="mt-4">
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-              Similarity Score: <span className="font-bold text-indigo-600 dark:text-indigo-400">{similarityScore.toFixed(4)}</span>
+          <div className="mt-3 space-y-2">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              <strong className="font-semibold">Admission Location:</strong>{" "}
+              {admissionLocation}
             </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              <strong className="font-semibold">Discharge Location:</strong>{" "}
+              {dischargeLocation}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              <strong className="font-semibold">Insurance:</strong> {insurance}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              <strong className="font-semibold">Religion:</strong> {religion}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              <strong className="font-semibold">Marital Status:</strong>{" "}
+              {maritalStatus}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              <strong className="font-semibold">Race:</strong> {race}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              <strong className="font-semibold">Diagnosis:</strong> {diagnosis}
+            </p>
+          </div>
+          <div className="flex gap-8 items-center">
+            <div className="mt-5">
+              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                Similarity Score:{" "}
+                <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
+                  {similarityScore.toFixed(4)}
+                </span>
+              </p>
+            </div>
+
+            <div className="mt-6">
+              <button
+                onClick={handleChatClick}
+                className="inline-block px-6 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-opacity-50"
+              >
+                Chat with Specialist
+              </button>
+            </div>
           </div>
         </div>
       </div>
