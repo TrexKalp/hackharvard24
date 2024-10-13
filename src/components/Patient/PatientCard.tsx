@@ -112,7 +112,7 @@ const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
       </div>
 
       <dl className="mt-6 flex gap-4 sm:gap-6">
-        <div className="flex flex-col-reverse">
+        <div className="flex flex-col">
           <dt className="text-sm font-medium text-gray-600 dark:text-gray-400">
             Admit Date
           </dt>
@@ -121,7 +121,7 @@ const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
           </dd>
         </div>
 
-        <div className="flex flex-col-reverse">
+        <div className="flex flex-col">
           <dt className="text-sm font-medium text-gray-600 dark:text-gray-400">
             Dispatch Date
           </dt>
@@ -130,7 +130,7 @@ const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
           </dd>
         </div>
 
-        <div className="flex flex-col-reverse">
+        <div className="flex flex-col">
           <dt className="text-sm font-medium text-gray-600 dark:text-gray-400">
             Insurance
           </dt>
@@ -139,7 +139,7 @@ const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
           </dd>
         </div>
 
-        <div className="flex flex-col-reverse">
+        <div className="flex flex-col">
           <dt className="text-sm font-medium text-gray-600 dark:text-gray-400">
             Language
           </dt>
@@ -148,7 +148,7 @@ const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
           </dd>
         </div>
 
-        <div className="flex flex-col-reverse">
+        <div className="flex flex-col">
           <dt className="text-sm font-medium text-gray-600 dark:text-gray-400">
             Ethnicity
           </dt>

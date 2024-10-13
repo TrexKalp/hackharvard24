@@ -43,7 +43,7 @@ const HorizontalBarChart: React.FC<HorizontalBarChartProps> = ({ data }) => {
       colors: ["transparent"],
     },
     xaxis: {
-    //   min: 0.5,
+      min: 0.85,
     //   max: 1,
       categories: [], // This will be set dynamically
       labels: {
@@ -53,7 +53,7 @@ const HorizontalBarChart: React.FC<HorizontalBarChartProps> = ({ data }) => {
           fontFamily: "Inter, ui-sans-serif",
           fontWeight: 400,
         },
-        offsetX: -2,
+        // offsetX: -2,
       },
     },
     yaxis: {
