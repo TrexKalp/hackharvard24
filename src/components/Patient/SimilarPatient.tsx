@@ -7,6 +7,7 @@ interface SimilarPatientProps {
   admissionLocation: string;
   dischargeLocation: string;
   insurance: string;
+  language: string;
   religion: string;
   maritalStatus: string;
   race: string;
@@ -20,6 +21,7 @@ const SimilarPatient: React.FC<SimilarPatientProps> = ({
   admissionLocation,
   dischargeLocation,
   insurance,
+  language,
   religion,
   maritalStatus,
   race,
@@ -55,6 +57,9 @@ const SimilarPatient: React.FC<SimilarPatientProps> = ({
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-300">
               <strong className="font-semibold">Insurance:</strong> {insurance}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              <strong className="font-semibold">Language:</strong> {language}
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-300">
               <strong className="font-semibold">Religion:</strong> {religion}

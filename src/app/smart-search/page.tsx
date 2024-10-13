@@ -26,11 +26,12 @@ const SmartSearchPage: React.FC = () => {
       admissionLocation: data[1],
       dischargeLocation: data[2],
       insurance: data[3] === "nan" ? "N/A" : data[3], // Replace "nan" with "N/A"
-      religion: data[4] === "nan" ? "N/A" : data[4],
-      maritalStatus: data[5] === "nan" ? "N/A" : data[5],
-      race: data[6] === "nan" ? "N/A" : data[6],
-      diagnosis: data[7] === "nan" ? "N/A" : data[7],
-      similarityScore: data[8],
+      language: data[4] === "nan" ? "N/A" : data[4],
+      religion: data[5] === "nan" ? "N/A" : data[5],
+      maritalStatus: data[6] === "nan" ? "N/A" : data[6],
+      race: data[7] === "nan" ? "N/A" : data[7],
+      diagnosis: data[8] === "nan" ? "N/A" : data[8],
+      similarityScore: data[9],
     };
   };
 
@@ -52,6 +53,7 @@ const SmartSearchPage: React.FC = () => {
                     admissionLocation={patientData.admissionLocation}
                     dischargeLocation={patientData.dischargeLocation}
                     insurance={patientData.insurance}
+                    language={patientData.language}
                     religion={patientData.religion}
                     maritalStatus={patientData.maritalStatus}
                     race={patientData.race}
