@@ -32,39 +32,39 @@ const users = [
   },
 ];
 
-// Initial dummy chat history (some users may not have messages)
+// Initial dummy chat history (now aligned with the `users` names)
 const initialChats = {
   1: [
     {
-      sender: "RxMedic123",
+      sender: "Anon456",
       message:
         "A patient with Type 2 diabetes is struggling with glucose control despite being on metformin and insulin. Any recommendations?",
     },
   ],
   2: [
     {
-      sender: "PediCareDoc456",
+      sender: "MedUser789",
       message:
         "A 6-year-old patient presents with recurrent ear infections despite multiple rounds of antibiotics. Looking for alternative management options.",
     },
   ],
   3: [
     {
-      sender: "OrthoExpert789",
+      sender: "RxDoc101",
       message:
         "I'm seeing recurrent fractures in a patient despite bisphosphonate therapy. Any suggestions on alternative treatments?",
     },
   ],
   4: [
     {
-      sender: "CardioDoc012",
+      sender: "TreatPro303",
       message:
         "I have a patient with heart failure who continues to show fluid retention despite being on a high dose of diuretics.",
     },
   ],
   5: [
     {
-      sender: "OncoTherapist345",
+      sender: "Clinician202",
       message:
         "A patient with metastatic cancer is experiencing severe nausea from chemotherapy. I'm considering switching to a different antiemetic.",
     },
@@ -72,7 +72,8 @@ const initialChats = {
 };
 
 const DummyChatPage: React.FC = () => {
-  const [selectedUser, setSelectedUser] = useState<number | null>(null);
+  // Automatically select user "Anon456" (id: 1)
+  const [selectedUser, setSelectedUser] = useState<number>(1); // Auto-select Anon456
   const [chats, setChats] = useState<{
     [key: number]: { sender: string; message: string }[];
   }>(initialChats);
