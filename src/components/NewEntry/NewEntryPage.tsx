@@ -32,7 +32,6 @@ const NewEntryPage = () => {
   };
 
   useEffect(() => {
-    // Flatpickr for admit_date
     flatpickr("#admit_date", {
       mode: "single",
       dateFormat: "M j, Y",
@@ -44,7 +43,6 @@ const NewEntryPage = () => {
       },
     });
 
-    // Flatpickr for dispatch_date
     flatpickr("#dispatch_date", {
       mode: "single",
       dateFormat: "M j, Y",
@@ -60,7 +58,7 @@ const NewEntryPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Format fields for API call
+    // Prepare the formatted string for the external API
     const {
       admission_type,
       admission_location,
@@ -84,25 +82,39 @@ const NewEntryPage = () => {
     ].join(";");
 
     try {
-      // Make the API call
-      const response = await fetch(
-        `http://localhost:8000/?new_text=${encodeURIComponent(formattedString)}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch data from the API.");
+      // 1. Push data to MongoDB
+      const mongoResponse = await fetch("/api/submit-entry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData), // Send form data as JSON
+      });
+
+      if (!mongoResponse.ok) {
+        throw new Error("Failed to submit entry to MongoDB.");
       }
 
-      const apiResult = await response.json();
+      // 2. Submit the formatted string to the external API (port 8000)
+      const externalResponse = await fetch(
+        `http://localhost:8000/?new_text=${encodeURIComponent(formattedString)}`
+      );
+      if (!externalResponse.ok) {
+        throw new Error("Failed to fetch data from the external API.");
+      }
 
-      // Build the URL with query parameters
+      const apiResult = await externalResponse.json();
+
+      // 3. Build the URL with query parameters and navigate
       const queryParams = new URLSearchParams({
-        result: JSON.stringify(apiResult),
+        result: JSON.stringify(apiResult), // Pass the external API result
+        formattedString, // Include the formatted string for reference
       });
 
       // Redirect to result page with query
       router.push(`/smart-search?${queryParams.toString()}`);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error during submission:", error);
       alert("Error during submission");
     }
   };
